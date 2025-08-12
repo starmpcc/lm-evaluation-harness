@@ -1,6 +1,7 @@
 from . import (
     anthropic_llms,
     api_models,
+    custom,
     dummy,
     gguf,
     hf_audiolm,
@@ -20,7 +21,6 @@ from . import (
     vllm_causallms,
     vllm_vlms,
 )
-
 
 # TODO: implement __all__
 
