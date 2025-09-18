@@ -888,17 +888,17 @@ class HFLM(TemplateLM):
             return_tensors="pt",
             **add_special_tokens,
         )
-        if left_truncate_len:
-            original_lengths = encoding["input_ids"].size(1)
-            if original_lengths > left_truncate_len:
-                eval_logger.warning(
-                    f"Left truncation applied. Original sequence length was {original_lengths}, "
-                    f"truncating to last {left_truncate_len} tokens. Some content will be lost.",
-                )
-            encoding["input_ids"] = encoding["input_ids"][:, -left_truncate_len:]
-            encoding["attention_mask"] = encoding["attention_mask"][
-                :, -left_truncate_len:
-            ]
+        # if left_truncate_len:
+            # original_lengths = encoding["input_ids"].size(1)
+            # if original_lengths > left_truncate_len:
+            #     eval_logger.warning(
+            #         f"Left truncation applied. Original sequence length was {original_lengths}, "
+            #         f"truncating to last {left_truncate_len} tokens. Some content will be lost.",
+            #     )
+            # encoding["input_ids"] = encoding["input_ids"][:, -left_truncate_len:]
+            # encoding["attention_mask"] = encoding["attention_mask"][
+            #     :, -left_truncate_len:
+            # ]
         self.tokenizer.padding_side = old_padding_side
 
         return encoding["input_ids"], encoding["attention_mask"]
